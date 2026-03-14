@@ -1,6 +1,10 @@
 import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Services } from './components/Services';
+import { Benefits } from './components/Benefits';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -8,18 +12,11 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        {/* Futuras secciones a añadir aquí: */}
-        {/* <Services /> */}
-        {/* <Benefits /> */}
-        {/* <Contact /> */}
+        <Services />
+        <Benefits />
+        <Contact />
       </main>
-      
-      {/* Footer minimalista temporal hasta construir el componente Footer completo */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center mt-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <p>© {new Date().getFullYear()} ABA Estudios. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
