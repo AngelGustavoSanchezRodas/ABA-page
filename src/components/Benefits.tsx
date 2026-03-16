@@ -1,9 +1,9 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Zap, Layers, Target } from 'lucide-react';
 
 interface Benefit {
-  icon: React.ReactNode;
+  icon: ReactNode;
   accentColor: string;
   accentBg: string;
   title: string;
@@ -15,25 +15,22 @@ const benefits: Benefit[] = [
     icon: <Zap size={26} />,
     accentColor: 'text-[#dfa135]',
     accentBg: 'bg-[#dfa135]/10',
-    title: 'Velocidad y Rendimiento',
-    description:
-      'Construimos con Vite y React para garantizar tiempos de carga ultrarrápidos y una experiencia de usuario fluida desde el primer pixel.',
+    title: 'Velocidad que vende',
+    description: 'Páginas que cargan al instante para que no pierdas ni un solo cliente por culpa de la espera. Velocidad optimizada para móviles.',
   },
   {
     icon: <Layers size={26} />,
     accentColor: 'text-[#43b5a9]',
     accentBg: 'bg-[#43b5a9]/10',
-    title: 'Código Limpio y Escalable',
-    description:
-      'Arquitectura de nivel senior: componentes modulares, TypeScript estricto y patrones probados que crecen con tu negocio sin generar deuda técnica.',
+    title: 'Tecnología sin dolores de cabeza',
+    description: 'Desarrollamos sitios web robustos que no se rompen. Tu página estará siempre lista para recibir visitas sin errores técnicos.',
   },
   {
     icon: <Target size={26} />,
     accentColor: 'text-[#ce4a7e]',
     accentBg: 'bg-[#ce4a7e]/10',
-    title: 'Decisiones Data-Driven',
-    description:
-      'Cada entrega va acompañada de métricas reales, dashboards accionables e insights que te permiten tomar decisiones de negocio con certeza.',
+    title: 'Datos para ganar más',
+    description: 'Convierte los números de tu negocio en una guía clara. Te mostramos exactamente qué está pasando en tu empresa para que sepas dónde invertir.',
   },
 ];
 
@@ -55,7 +52,7 @@ const itemVariants: Variants = {
   },
 };
 
-export const Benefits: React.FC = () => {
+export const Benefits = () => {
   return (
     <section id="benefits" className="relative py-24 lg:py-32 bg-white overflow-hidden">
       {/* Decorative accent line at top */}
@@ -77,8 +74,7 @@ export const Benefits: React.FC = () => {
             Por qué elegirnos
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#3b3f46] leading-tight mb-4">
-            La diferencia que{' '}
-            <span className="text-[#ce4a7e]">marca la diferencia</span>
+            Hacemos que tu tecnología trabaje para ti, no al revés.
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
             No solo entregamos proyectos, construimos ventajas competitivas reales para tu empresa.
