@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
 
 // ── Logo tipográfico reutilizable para el Footer ─────────────────────────────
 const FooterLogo: React.FC = () => (
@@ -21,7 +21,6 @@ const navLinks = [
 
 const socialLinks = [
   { icon: <Linkedin size={18} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: <Github   size={18} />, href: 'https://github.com',   label: 'GitHub'   },
   { icon: <Twitter  size={18} />, href: 'https://twitter.com',  label: 'Twitter'  },
 ];
 
@@ -40,7 +39,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <FooterLogo />
             <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
-              Somos tu aliado tecnológico. Transformamos ideas en software de alto impacto y datos en decisiones estratégicas.
+              Creamos soluciones digitales a la medida para negocios que buscan crecer y optimizar su tiempo.
             </p>
           </div>
 

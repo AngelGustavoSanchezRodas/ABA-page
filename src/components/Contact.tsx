@@ -112,11 +112,11 @@ export const Contact: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <ContactCard
             index={0}
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios.`}
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola ABA Estudios, me interesa mejorar la tecnología de mi negocio y me gustaría una asesoría.")}`}
             icon={<MessageCircle size={26} />}
             badge="Respuesta inmediata"
             title="Hablemos por WhatsApp"
-            subtitle="Cuéntanos tu idea. Te respondemos en menos de 24 horas y agendamos una llamada sin compromiso."
+            subtitle="Escríbenos y despeja tus dudas al instante. Atención personalizada sin compromisos."
             accentColor="text-[#43b5a9]"
             accentBg="bg-[#43b5a9]/10"
             accentRing="border-[#43b5a9]/20 hover:border-[#43b5a9]/60"
@@ -127,7 +127,7 @@ export const Contact: React.FC = () => {
             icon={<Mail size={26} />}
             badge="Propuesta detallada"
             title="Envíanos un Correo"
-            subtitle="Prefiero detallar mi proyecto por escrito. Te enviamos una propuesta completa en 48 horas."
+            subtitle="Cuéntanos los detalles de tu proyecto. Analizamos tu caso y te enviamos una propuesta clara."
             accentColor="text-[#dfa135]"
             accentBg="bg-[#dfa135]/10"
             accentRing="border-[#dfa135]/20 hover:border-[#dfa135]/60"
