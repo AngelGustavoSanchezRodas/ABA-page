@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu as DropdownMenu, Transition } from '@headlessui/react';
-import { Menu, X, MessageCircle, Mail, FileText, ChevronDown, Download } from 'lucide-react';
+import { Menu, X, MessageCircle, Mail, ChevronDown, Download } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // ── ABA Estudios brand logo as inline SVG ────────────────────────────────────
