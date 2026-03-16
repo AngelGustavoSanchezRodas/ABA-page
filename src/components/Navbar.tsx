@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MessageCircle, Mail, FileText, ChevronDown } from 'lucide-react';
+import { Menu as DropdownMenu, Transition } from '@headlessui/react';
+import { Menu, X, MessageCircle, Mail, FileText, ChevronDown, Download } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 // ── ABA Estudios brand logo as inline SVG ────────────────────────────────────
 const AbaLogo: React.FC<{ className?: string }> = ({ className }) => (
@@ -41,13 +43,13 @@ const dropdownItems = [
     highlight: false,
   },
   {
-    icon: <FileText size={18} />,
-    label: 'Descargar Presentación',
+    icon: <Download size={18} />,
+    label: 'Descargar Brochure',
     sub: 'PDF con nuestros servicios',
-    href: '#',               // ← Reemplaza con la URL real del PDF cuando esté listo
+    href: '#',
     iconColor: 'text-[#ce4a7e]',
     iconBg: 'bg-[#ce4a7e]/10',
-    highlight: true,         // Diseño destacado con fondo sutil
+    highlight: true,
   },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
@@ -55,36 +57,12 @@ const dropdownItems = [
 export const Navbar: React.FC = () => {
   const [isScrolled,     setIsScrolled]     = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen,   setDropdownOpen]   = useState(false);
-
-  // Ref para detectar clics fuera del dropdown y cerrarlo
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Sombra al hacer scroll
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Cerrar dropdown al hacer clic fuera
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    if (dropdownOpen) document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [dropdownOpen]);
-
-  // Cerrar dropdown al presionar Escape
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDropdownOpen(false);
-    };
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
   }, []);
 
   const navLinks = [
@@ -121,80 +99,76 @@ export const Navbar: React.FC = () => {
             ))}
 
             {/* Botón "Hablemos" con Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen((prev) => !prev)}
-                aria-expanded={dropdownOpen}
-                aria-haspopup="true"
-                className="flex items-center gap-1.5 bg-[#dfa135] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#c98e29] transition-colors shadow-lg shadow-[#dfa135]/30 focus:outline-none"
-              >
-                Hablemos
-                {/* Chevron rota suavemente cuando el menú está abierto */}
-                <motion.span
-                  animate={{ rotate: dropdownOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex items-center"
-                >
-                  <ChevronDown size={15} />
-                </motion.span>
-              </button>
+            <div className="relative z-50">
+              <DropdownMenu as="div" className="relative inline-block text-left">
+                {({ open }) => (
+                  <>
+                    <DropdownMenu.Button as={Fragment}>
+                      <button className="flex items-center gap-1.5 bg-[#dfa135] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#c98e29] transition-colors shadow-lg shadow-[#dfa135]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa135] focus-visible:ring-offset-2">
+                        Hablemos
+                        <ChevronDown
+                          size={15}
+                          className={cn("transition-transform duration-200", open ? "rotate-180" : "rotate-0")}
+                        />
+                      </button>
+                    </DropdownMenu.Button>
 
-              {/* ── Dropdown Panel ────────────────────────────────────────── */}
-              <AnimatePresence>
-                {dropdownOpen && (
-                  <motion.div
-                    key="dropdown"
-                    initial={{ opacity: 0, y: -10, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0,   scale: 1     }}
-                    exit={{    opacity: 0, y: -10, scale: 0.97  }}
-                    transition={{ duration: 0.18, ease: 'easeOut' }}
-                    // Alineado a la derecha del botón para no salirse del viewport
-                    className="absolute right-0 top-full mt-3 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50"
-                  >
-                    {/* Franja decorativa superior con gradiente de marca */}
-                    <div className="h-1 w-full bg-gradient-to-r from-[#43b5a9] via-[#dfa135] to-[#ce4a7e]" />
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-200"
+                      enterFrom="opacity-0 translate-y-2 scale-95"
+                      enterTo="opacity-100 translate-y-0 scale-100"
+                      leave="transition ease-in duration-150"
+                      leaveFrom="opacity-100 translate-y-0 scale-100"
+                      leaveTo="opacity-0 translate-y-2 scale-95"
+                    >
+                      <DropdownMenu.Items className="absolute right-0 mt-3 w-72 origin-top-right rounded-2xl glass-panel overflow-hidden focus:outline-none">
+                        {/* Franja de la marca */}
+                        <div className="h-1 w-full bg-gradient-to-r from-[#43b5a9] via-[#dfa135] to-[#ce4a7e]" />
 
-                    <div className="p-2">
-                      {dropdownItems.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          target={item.href.startsWith('http') ? '_blank' : undefined}
-                          rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                          onClick={() => setDropdownOpen(false)}
-                          className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-150 group ${
-                            item.highlight
-                              ? 'bg-gray-50 hover:bg-gray-100'
-                              : 'hover:bg-gray-50'
-                          }`}
-                        >
-                          {/* Ícono */}
-                          <div className={`flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-lg ${item.iconBg} ${item.iconColor}`}>
-                            {item.icon}
-                          </div>
+                        <div className="p-2">
+                          {dropdownItems.map((item) => (
+                            <DropdownMenu.Item key={item.label}>
+                              {({ active }) => (
+                                <a
+                                  href={item.href}
+                                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                  className={cn(
+                                    "flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-150 group",
+                                    active ? "bg-white/60" : "hover:bg-white/40",
+                                    item.highlight && "bg-white/50 ring-1 ring-[#ce4a7e]/10"
+                                  )}
+                                >
+                                  <div className={cn("flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-lg", item.iconBg, item.iconColor)}>
+                                    {item.icon}
+                                  </div>
 
-                          {/* Texto */}
-                          <div className="flex-1 min-w-0">
-                            <p className={`text-sm font-semibold ${item.iconColor} leading-tight`}>
-                              {item.label}
-                            </p>
-                            <p className="text-xs text-gray-400 mt-0.5 truncate">
-                              {item.sub}
-                            </p>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
+                                  <div className="flex-1 min-w-0">
+                                    <p className={cn("text-sm font-semibold leading-tight", item.iconColor)}>
+                                      {item.label}
+                                    </p>
+                                    <p className="text-xs text-gray-500 mt-0.5 truncate">
+                                      {item.sub}
+                                    </p>
+                                  </div>
+                                </a>
+                              )}
+                            </DropdownMenu.Item>
+                          ))}
+                        </div>
 
-                    {/* Pie del dropdown */}
-                    <div className="px-4 py-3 border-t border-gray-100 bg-gray-50/60">
-                      <p className="text-xs text-center text-gray-400">
-                        Respondemos en menos de <span className="font-semibold text-gray-500">24 horas</span>
-                      </p>
-                    </div>
-                  </motion.div>
+                        {/* Pie de dropdown con opacidad modificada para integrarse al glassmorphism */}
+                        <div className="px-4 py-3 border-t border-white/30 bg-white/30 backdrop-blur-md">
+                          <p className="text-xs text-center text-gray-500">
+                            Respondemos en menos de <span className="font-semibold text-gray-700">24 horas</span>
+                          </p>
+                        </div>
+                      </DropdownMenu.Items>
+                    </Transition>
+                  </>
                 )}
-              </AnimatePresence>
+              </DropdownMenu>
             </div>
           </div>
 
