@@ -109,11 +109,11 @@ export const Services: React.FC = () => {
             accentBorder="#43b5a9"
             badge="Desarrollo Web"
             title="Desarrollo Web a Medida"
-            description="Páginas web modernas, rápidas y optimizadas para conversión. Construimos experiencias digitales que convierten visitantes en clientes."
+            description="Páginas web ultrarrápidas que cargan en menos de 2 segundos. Creamos catálogos digitales y sitios corporativos optimizados para que tus clientes te contacten directo por WhatsApp."
             features={[
-              'Aplicaciones con React & TypeScript',
-              'E-commerce de alto rendimiento',
-              'SEO técnico & Core Web Vitals',
+              'Landing Pages de Alta Conversión',
+              'Sitios Web Corporativos Dinámicos',
+              'Optimización para Buscadores y Velocidad',
             ]}
           />
           <ServiceCard
@@ -123,12 +123,12 @@ export const Services: React.FC = () => {
             accentBg="bg-[#ce4a7e]"
             accentBorder="#ce4a7e"
             badge="Análisis de Datos"
-            title="Análisis de Datos Avanzado"
-            description="Transformamos datos brutos en insights de negocio estratégicos. Del dato al resultado, con metodologías probadas y visualizaciones claras."
+            title="Análisis de Datos"
+            description="Ponemos orden en tu negocio. Limpiamos tus bases de datos y creamos herramientas visuales para que sepas exactamente cuánto vendes y cuánto gastas sin perder horas."
             features={[
-              'BI Dashboards interactivos',
-              'Modelos predictivos con ML',
-              'KPIs y métricas accionables',
+              'Automatización de Reportes (Excel/Google Sheets)',
+              'Tableros de Control de Ventas y Gastos',
+              'Análisis de Rentabilidad y Crecimiento',
             ]}
           />
         </div>

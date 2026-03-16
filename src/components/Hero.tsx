@@ -1,9 +1,8 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, LineChart } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 
-export const Hero: React.FC = () => {
+export const Hero = () => {
   return (
     <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Elementos decorativos de fondo usando los colores de la marca */}
@@ -34,7 +33,7 @@ export const Hero: React.FC = () => {
             </h1>
             
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Somos tu aliado tecnológico. Creamos experiencias web modernas, rápidas y escalables, 
+              Somos tu aliado tecnológico. Creamos experiencias web modernas, rápidas y enfocadas en resultados, 
               y extraemos el verdadero valor de tus datos para impulsar tu negocio.
             </p>
             
@@ -43,7 +42,7 @@ export const Hero: React.FC = () => {
                 href="#contact" 
                 className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#43b5a9] text-white px-8 py-3.5 rounded-full font-bold hover:bg-[#349c91] transition-all transform hover:-translate-y-1 shadow-lg shadow-[#43b5a9]/30"
               >
-                Inicia tu Proyecto
+                Agenda una Asesoría Gratuita
                 <ArrowRight size={20} />
               </a>
               <a 
@@ -98,12 +97,13 @@ export const Hero: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
-              <div className="bg-[#dfa135]/20 p-3 rounded-lg">
+              <div className="bg-[#dfa135]/20 p-3 rounded-lg flex-shrink-0">
                 <LineChart className="text-[#dfa135]" size={24} />
               </div>
               <div>
                 <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Crecimiento</p>
                 <p className="text-lg font-bold text-[#3b3f46]">+120%</p>
+                <p className="text-[10px] text-gray-400 leading-tight mt-1">Optimización de visibilidad y eficiencia digital</p>
               </div>
             </motion.div>
           </motion.div>

@@ -1,11 +1,15 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu as DropdownMenu, Transition } from '@headlessui/react';
 import { Menu, X, MessageCircle, Mail, ChevronDown, Download } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 // ── ABA Estudios brand logo as inline SVG ────────────────────────────────────
-const AbaLogo: React.FC<{ className?: string }> = ({ className }) => (
+interface AbaLogoProps {
+  className?: string;
+}
+
+const AbaLogo = ({ className }: AbaLogoProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 220 70"
@@ -54,7 +58,7 @@ const dropdownItems = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const Navbar: React.FC = () => {
+export const Navbar = () => {
   const [isScrolled,     setIsScrolled]     = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -87,7 +91,7 @@ export const Navbar: React.FC = () => {
           </a>
 
           {/* ── Desktop Nav ───────────────────────────────────────────────── */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
               <a
                 key={link.name}
