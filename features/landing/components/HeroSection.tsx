@@ -44,7 +44,7 @@ export const HeroSection = () => {
                 The Legacy App.tsx had `min-h-screen bg-slate-50`.
                 But the FSD page has `bg-brand-dark` in the `app/page.tsx` maybe? Or in the new components?
                 Ah! The prompt specifically says: "Asegúrate de que los textos descriptivos usen 'text-slate-300' para garantizar el contraste en el fondo oscuro." This implies that the section HAS a dark background. So in Hero, the H1 text `#3b3f46` (brand-dark) should actually be `text-white` to be visible, and the describing `<p>` must be `text-slate-300`. Let's implement this dark theme for Hero. */}
-            <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0">
               Somos tu aliado tecnológico. Creamos experiencias web modernas, rápidas y enfocadas en resultados, 
               y extraemos el verdadero valor de tus datos para impulsar tu negocio.
             </p>
@@ -59,14 +59,14 @@ export const HeroSection = () => {
               </Link>
               <Link 
                 href="#services" 
-                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent text-white border-2 border-slate-700 px-8 py-3.5 rounded-full font-bold hover:border-brand-turquoise hover:text-brand-turquoise transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent text-slate-700 border-2 border-slate-300 px-8 py-3.5 rounded-full font-bold hover:border-brand-turquoise hover:text-brand-turquoise transition-all"
               >
                 Ver Servicios
               </Link>
             </div>
 
             {/* Badges de confianza */}
-            <div className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-400 font-medium">
+            <div className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-600 font-medium">
               <div className="flex items-center gap-2">
                 <Code size={18} className="text-brand-turquoise" />
                 Desarrollo a medida
@@ -86,9 +86,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             {/* Contenedor decorativo de la imagen */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl glass-panel border border-slate-700/50">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl glass-panel border border-slate-200/50">
               {/* Fallback de UI usando glass panel */}
-              <div className="absolute inset-0 bg-slate-800 -z-10"></div>
+              <div className="absolute inset-0 bg-slate-100 -z-10"></div>
               
               <img 
                 src="/hero.png" 
@@ -103,7 +103,7 @@ export const HeroSection = () => {
 
             {/* Tarjeta flotante decorativa */}
             <motion.div 
-              className="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl shadow-xl border border-slate-700/50 flex items-center gap-4"
+              className="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl shadow-xl border border-slate-200 flex items-center gap-4"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -112,8 +112,8 @@ export const HeroSection = () => {
                 <LineChart className="text-brand-mustard" size={24} />
               </div>
               <div>
-                <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Crecimiento</p>
-                <p className="text-lg font-bold text-white">+120%</p>
+                <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Crecimiento</p>
+                <p className="text-lg font-bold text-slate-900">+120%</p>
                 <p className="text-[10px] text-slate-500 leading-tight mt-1">Optimización de visibilidad y eficiencia digital</p>
               </div>
             </motion.div>

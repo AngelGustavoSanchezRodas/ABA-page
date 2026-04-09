@@ -23,7 +23,7 @@ const AbaLogo = ({ className }: AbaLogoProps) => (
     <text x="4"   y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-turquoise" letterSpacing="-2">A</text>
     <text x="52"  y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-mustard" letterSpacing="-2">B</text>
     <text x="101" y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-magenta" letterSpacing="-2">A</text>
-    <text x="156" y="46" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="600" fontSize="16"  className="fill-brand-dark" letterSpacing="0.5">Estudios</text>
+    <text x="156" y="46" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="600" fontSize="16"  className="fill-slate-900" letterSpacing="0.5">Estudios</text>
     <line x1="150" y1="10" x2="150" y2="52" className="stroke-slate-200" strokeWidth="1.5" />
   </svg>
 );
@@ -99,7 +99,7 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-brand-dark hover:text-brand-magenta font-medium transition-colors"
+                className="text-slate-700 hover:text-slate-900 font-medium transition-colors"
               >
                 {link.name}
               </Link>
@@ -155,7 +155,7 @@ export const Navbar = () => {
                                     <p className={cn("text-sm font-semibold leading-tight", item.iconColor)}>
                                       {item.label}
                                     </p>
-                                    <p className="text-xs text-gray-500 mt-0.5 truncate">
+                                    <p className="text-xs text-slate-500 mt-0.5 truncate">
                                       {item.sub}
                                     </p>
                                   </div>
@@ -167,8 +167,8 @@ export const Navbar = () => {
 
                         {/* Pie de dropdown con opacidad modificada para integrarse al glassmorphism */}
                         <div className="px-4 py-3 border-t border-white/30 glass-panel">
-                          <p className="text-xs text-center text-gray-500">
-                            Respondemos en menos de <span className="font-semibold text-gray-700">24 horas</span>
+                          <p className="text-xs text-center text-slate-500">
+                            Respondemos en menos de <span className="font-semibold text-slate-700">24 horas</span>
                           </p>
                         </div>
                       </DropdownMenu.Items>
@@ -183,7 +183,7 @@ export const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-brand-dark hover:text-brand-turquoise transition-colors focus:outline-none"
+              className="text-slate-700 hover:text-slate-900 transition-colors focus:outline-none"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -207,7 +207,7 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block px-3 py-3 text-base font-medium text-brand-dark hover:text-brand-turquoise hover:bg-gray-50 rounded-lg"
+                  className="block px-3 py-3 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-gray-50 rounded-lg"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -216,7 +216,7 @@ export const Navbar = () => {
 
               {/* Sección "Hablemos" incrustada en el menú mobile */}
               <div className="pt-3 border-t border-gray-100 space-y-1">
-                <p className="px-3 pb-1 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <p className="px-3 pb-1 text-xs font-bold uppercase tracking-widest text-slate-400">
                   Hablemos
                 </p>
                 {dropdownItems.map((item) => (
@@ -233,7 +233,7 @@ export const Navbar = () => {
                     </div>
                     <div>
                       <p className={`text-sm font-semibold ${item.iconColor}`}>{item.label}</p>
-                      <p className="text-xs text-gray-400">{item.sub}</p>
+                      <p className="text-xs text-slate-400">{item.sub}</p>
                     </div>
                   </Link>
                 ))}

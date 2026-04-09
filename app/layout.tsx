@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Lexend } from 'next/font/google';
 import './globals.css';
 
 import { Navbar } from '@/features/layout/components/Navbar';
 import { Footer } from '@/features/layout/components/Footer';
 
-const jakarta = Plus_Jakarta_Sans({
+const lexend = Lexend({
   subsets: ['latin'],
-  variable: '--font-jakarta',
+  variable: '--font-lexend',
 });
 
 export const metadata: Metadata = {
@@ -23,9 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${jakarta.variable} font-sans antialiased bg-gray-50 text-[#3b3f46] selection:bg-[#43b5a9] selection:text-white flex flex-col min-h-screen`}>
+      <body className={`${lexend.variable} font-sans antialiased bg-white text-slate-900 selection:bg-[#43b5a9] selection:text-white flex flex-col min-h-screen`}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-white focus:text-[#43b5a9] focus:z-50 focus:font-bold">
+          Saltar al contenido principal
+        </a>
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main id="main-content" className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
