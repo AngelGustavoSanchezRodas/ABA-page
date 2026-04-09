@@ -1,8 +1,11 @@
+'use client';
+
 import { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu as DropdownMenu, Transition } from '@headlessui/react';
 import { Menu, X, MessageCircle, Mail, ChevronDown, Download } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 // ── ABA Estudios brand logo as inline SVG ────────────────────────────────────
 interface AbaLogoProps {
@@ -17,11 +20,11 @@ const AbaLogo = ({ className }: AbaLogoProps) => (
     aria-label="ABA Estudios"
     role="img"
   >
-    <text x="4"   y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" fill="#43b5a9" letterSpacing="-2">A</text>
-    <text x="52"  y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" fill="#dfa135" letterSpacing="-2">B</text>
-    <text x="101" y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" fill="#ce4a7e" letterSpacing="-2">A</text>
-    <text x="156" y="46" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="600" fontSize="16"  fill="#3b3f46" letterSpacing="0.5">Estudios</text>
-    <line x1="150" y1="10" x2="150" y2="52" stroke="#e2e8f0" strokeWidth="1.5" />
+    <text x="4"   y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-turquoise" letterSpacing="-2">A</text>
+    <text x="52"  y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-mustard" letterSpacing="-2">B</text>
+    <text x="101" y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-brand-magenta" letterSpacing="-2">A</text>
+    <text x="156" y="46" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="600" fontSize="16"  className="fill-brand-dark" letterSpacing="0.5">Estudios</text>
+    <line x1="150" y1="10" x2="150" y2="52" className="stroke-slate-200" strokeWidth="1.5" />
   </svg>
 );
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,8 +36,8 @@ const dropdownItems = [
     label: 'Chat por WhatsApp',
     sub: 'Respuesta en menos de 24 h',
     href: 'https://wa.me/50212345678',
-    iconColor: 'text-[#43b5a9]',
-    iconBg: 'bg-[#43b5a9]/10',
+    iconColor: 'text-brand-turquoise',
+    iconBg: 'bg-brand-turquoise/10',
     highlight: false,
   },
   {
@@ -42,8 +45,8 @@ const dropdownItems = [
     label: 'Enviar un Correo',
     sub: 'Propuesta detallada por email',
     href: 'mailto:hola@abaestudios.com',
-    iconColor: 'text-[#dfa135]',
-    iconBg: 'bg-[#dfa135]/10',
+    iconColor: 'text-brand-mustard',
+    iconBg: 'bg-brand-mustard/10',
     highlight: false,
   },
   {
@@ -51,8 +54,8 @@ const dropdownItems = [
     label: 'Descargar Brochure',
     sub: 'PDF con nuestros servicios',
     href: '#',
-    iconColor: 'text-[#ce4a7e]',
-    iconBg: 'bg-[#ce4a7e]/10',
+    iconColor: 'text-brand-magenta',
+    iconBg: 'bg-brand-magenta/10',
     highlight: true,
   },
 ];
@@ -86,20 +89,20 @@ export const Navbar = () => {
         <div className="flex justify-between items-center">
 
           {/* Logo SVG */}
-          <a href="#home" aria-label="ABA Estudios – Ir al inicio">
+          <Link href="#home" aria-label="ABA Estudios – Ir al inicio">
             <AbaLogo className="h-10 w-auto" />
-          </a>
+          </Link>
 
           {/* ── Desktop Nav ───────────────────────────────────────────────── */}
           <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-[#3b3f46] hover:text-[#ce4a7e] font-medium transition-colors"
+                className="text-brand-dark hover:text-brand-magenta font-medium transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
 
             {/* Botón "Hablemos" con Dropdown */}
@@ -108,7 +111,7 @@ export const Navbar = () => {
                 {({ open }) => (
                   <>
                     <DropdownMenu.Button as={Fragment}>
-                      <button className="flex items-center gap-1.5 bg-[#dfa135] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#c98e29] transition-colors shadow-lg shadow-[#dfa135]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa135] focus-visible:ring-offset-2">
+                      <button className="flex items-center gap-1.5 bg-brand-mustard text-white px-6 py-2 rounded-full font-semibold hover:brightness-110 transition-all shadow-lg shadow-brand-mustard/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-mustard focus-visible:ring-offset-2">
                         Hablemos
                         <ChevronDown
                           size={15}
@@ -126,22 +129,22 @@ export const Navbar = () => {
                       leaveFrom="opacity-100 translate-y-0 scale-100"
                       leaveTo="opacity-0 translate-y-2 scale-95"
                     >
-                      <DropdownMenu.Items className="absolute right-0 mt-3 w-72 origin-top-right rounded-2xl glass-panel overflow-hidden focus:outline-none">
+                      <DropdownMenu.Items className="absolute right-0 mt-3 w-72 origin-top-right rounded-2xl glass-panel shadow-xl overflow-hidden focus:outline-none border-0">
                         {/* Franja de la marca */}
-                        <div className="h-1 w-full bg-gradient-to-r from-[#43b5a9] via-[#dfa135] to-[#ce4a7e]" />
+                        <div className="h-1 w-full bg-gradient-to-r from-brand-turquoise via-brand-mustard to-brand-magenta" />
 
                         <div className="p-2">
                           {dropdownItems.map((item) => (
                             <DropdownMenu.Item key={item.label}>
                               {({ active }) => (
-                                <a
+                                <Link
                                   href={item.href}
                                   target={item.href.startsWith('http') ? '_blank' : undefined}
                                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                   className={cn(
                                     "flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-150 group",
                                     active ? "bg-white/60" : "hover:bg-white/40",
-                                    item.highlight && "bg-white/50 ring-1 ring-[#ce4a7e]/10"
+                                    item.highlight && "bg-white/50 ring-1 ring-brand-magenta/10"
                                   )}
                                 >
                                   <div className={cn("flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-lg", item.iconBg, item.iconColor)}>
@@ -156,14 +159,14 @@ export const Navbar = () => {
                                       {item.sub}
                                     </p>
                                   </div>
-                                </a>
+                                </Link>
                               )}
                             </DropdownMenu.Item>
                           ))}
                         </div>
 
                         {/* Pie de dropdown con opacidad modificada para integrarse al glassmorphism */}
-                        <div className="px-4 py-3 border-t border-white/30 bg-white/30 backdrop-blur-md">
+                        <div className="px-4 py-3 border-t border-white/30 glass-panel">
                           <p className="text-xs text-center text-gray-500">
                             Respondemos en menos de <span className="font-semibold text-gray-700">24 horas</span>
                           </p>
@@ -180,7 +183,7 @@ export const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-[#3b3f46] hover:text-[#43b5a9] transition-colors focus:outline-none"
+              className="text-brand-dark hover:text-brand-turquoise transition-colors focus:outline-none"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -201,14 +204,14 @@ export const Navbar = () => {
           >
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
-                  className="block px-3 py-3 text-base font-medium text-[#3b3f46] hover:text-[#43b5a9] hover:bg-gray-50 rounded-lg"
+                  className="block px-3 py-3 text-base font-medium text-brand-dark hover:text-brand-turquoise hover:bg-gray-50 rounded-lg"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
 
               {/* Sección "Hablemos" incrustada en el menú mobile */}
@@ -217,7 +220,7 @@ export const Navbar = () => {
                   Hablemos
                 </p>
                 {dropdownItems.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}
@@ -232,7 +235,7 @@ export const Navbar = () => {
                       <p className={`text-sm font-semibold ${item.iconColor}`}>{item.label}</p>
                       <p className="text-xs text-gray-400">{item.sub}</p>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

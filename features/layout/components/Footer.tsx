@@ -1,12 +1,27 @@
 import React from 'react';
-import { Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+
+const Linkedin = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const Twitter = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+  </svg>
+);
+import Link from 'next/link';
 
 // ── Logo tipográfico reutilizable para el Footer ─────────────────────────────
-const FooterLogo: React.FC = () => (
+const FooterLogo = () => (
   <span className="text-2xl font-black tracking-tight select-none">
-    <span className="text-[#43b5a9]">A</span>
-    <span className="text-[#dfa135]">B</span>
-    <span className="text-[#ce4a7e]">A</span>
+    <span className="text-brand-turquoise">A</span>
+    <span className="text-brand-mustard">B</span>
+    <span className="text-brand-magenta">A</span>
     <span className="text-slate-300 font-semibold ml-2 text-lg">Estudios</span>
   </span>
 );
@@ -24,13 +39,13 @@ const socialLinks = [
   { icon: <Twitter  size={18} />, href: 'https://twitter.com',  label: 'Twitter'  },
 ];
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#3b3f46] text-slate-400">
+    <footer className="bg-brand-dark text-slate-400">
       {/* Línea decorativa superior con gradiente de marca */}
-      <div className="h-px w-full bg-gradient-to-r from-[#43b5a9] via-[#dfa135] to-[#ce4a7e]" />
+      <div className="h-px w-full bg-gradient-to-r from-brand-turquoise via-brand-mustard to-brand-magenta" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
@@ -51,13 +66,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
-                    className="text-sm text-slate-400 hover:text-[#43b5a9] transition-colors duration-200 flex items-center gap-1 group"
+                    className="text-sm text-slate-400 hover:text-brand-turquoise transition-colors duration-200 flex items-center gap-1 group"
                   >
-                    <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 text-[#43b5a9]">›</span>
+                    <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 text-brand-turquoise">›</span>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -72,7 +87,7 @@ export const Footer: React.FC = () => {
             {/* Email */}
             <a
               href="mailto:hola@abaestudios.com"
-              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#dfa135] transition-colors mb-6 group"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-mustard transition-colors mb-6 group"
             >
               hola@abaestudios.com
               <ArrowUpRight
@@ -90,7 +105,7 @@ export const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-[#43b5a9]/20 hover:text-[#43b5a9] text-slate-400 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-turquoise/20 hover:text-brand-turquoise text-slate-400 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -107,7 +122,7 @@ export const Footer: React.FC = () => {
           </p>
           <p className="flex items-center gap-1">
             Hecho con
-            <span className="text-[#ce4a7e] mx-1">♥</span>
+            <span className="text-brand-magenta mx-1">♥</span>
             en Guatemala
           </p>
         </div>

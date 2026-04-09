@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-turquoise: #43b5a9;
+  --color-brand-mustard: #dfa135;
+  --color-brand-magenta: #ce4a7e;
+  --color-brand-dark: #3b3f46;
+}
+
+@utility glass-panel {
+  backdrop-filter: blur(16px);
+  background-color: rgb(255 255 255 / 0.1);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
