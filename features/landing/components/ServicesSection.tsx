@@ -50,15 +50,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </span>
 
       {/* Title */}
-      <h3 className="text-2xl font-bold text-white mb-3 leading-snug">{title}</h3>
+      <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-snug">{title}</h3>
 
       {/* Description */}
-      <p className="text-slate-300 text-base leading-relaxed mb-6">{description}</p>
+      <p className="text-slate-600 text-base leading-relaxed mb-6">{description}</p>
 
       {/* Features list */}
       <ul className="space-y-2 mt-auto">
         {features.map((feat) => (
-          <li key={feat} className="flex items-center gap-2 text-sm font-medium text-slate-400">
+          <li key={feat} className="flex items-center gap-2 text-sm font-medium text-slate-600">
             <CheckCircle2 size={16} className={accentColor} />
             {feat}
           </li>
@@ -87,11 +87,11 @@ export const ServicesSection = () => {
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-mustard bg-brand-mustard/10 px-4 py-1.5 rounded-full mb-4">
             Lo que hacemos
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
             Nuestras Soluciones{' '}
             <span className="text-brand-turquoise">Tecnológicas</span>
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-600 text-lg leading-relaxed">
             Dos pilares especializados que se complementan para hacer crecer tu negocio de forma integral y sostenible.
           </p>
         </motion.div>

@@ -59,7 +59,7 @@ export const BenefitsSection = () => {
   return (
     <section id="benefits" className="relative py-24 lg:py-32 bg-transparent overflow-hidden">
       {/* Decorative accent line at top */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       {/* Decorative blobs */}
       <div className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[600px] h-48 bg-brand-mustard/5 blur-3xl rounded-full pointer-events-none" />
@@ -76,10 +76,10 @@ export const BenefitsSection = () => {
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-magenta bg-brand-magenta/10 px-4 py-1.5 rounded-full mb-4">
             Por qué elegirnos
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
             Hacemos que tu tecnología trabaje para ti, no al revés.
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-slate-600 text-lg leading-relaxed">
             No solo entregamos proyectos, construimos ventajas competitivas reales para tu empresa.
           </p>
         </motion.div>
@@ -104,10 +104,10 @@ export const BenefitsSection = () => {
                   <span className={b.accentColor}>{b.icon}</span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 leading-snug">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 leading-snug">
                   {b.title}
                 </h3>
-                <p className="text-slate-300 text-sm leading-relaxed flex-grow">
+                <p className="text-slate-600 text-sm leading-relaxed flex-grow">
                   {b.description}
                 </p>
 

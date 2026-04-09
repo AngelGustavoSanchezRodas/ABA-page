@@ -9,11 +9,11 @@
 
 @utility glass-panel {
   backdrop-filter: blur(16px);
-  background-color: rgb(255 255 255 / 0.1);
+  background-color: rgba(255, 255, 255, 0.7);
   border-width: 1px;
   border-style: solid;
-  border-color: rgb(255 255 255 / 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  border-color: rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.05);
 }
 
 @layer base {

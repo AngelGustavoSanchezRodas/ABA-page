@@ -63,8 +63,8 @@ const ContactCard: React.FC<ContactCardProps> = ({
 
       {/* Título y subtítulo */}
       <div>
-        <h3 className="text-xl font-extrabold text-white mb-1 leading-snug relative z-10">{title}</h3>
-        <p className="text-slate-300 text-sm leading-relaxed relative z-10">{subtitle}</p>
+        <h3 className="text-xl font-extrabold text-slate-900 mb-1 leading-snug relative z-10">{title}</h3>
+        <p className="text-slate-600 text-sm leading-relaxed relative z-10">{subtitle}</p>
       </div>
 
       {/* CTA arrow */}
@@ -101,12 +101,12 @@ export const ContactSection = () => {
             Hablemos
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-5">
             ¿Listo para{' '}
             <span className="text-brand-turquoise">impulsar</span>{' '}
             tu negocio?
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-600 text-lg max-w-xl mx-auto leading-relaxed">
             Sin formularios complicados. Elige la vía que prefieras y cuéntanos sobre tu próximo proyecto.
           </p>
         </motion.div>
