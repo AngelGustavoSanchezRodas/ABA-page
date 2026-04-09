@@ -1,22 +1,19 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/features/layout/components/Navbar";
-import { Footer } from "@/features/layout/components/Footer";
-import { FloatingContact } from "@/features/layout/components/FloatingContact";
+import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import './globals.css';
 
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
+import { Navbar } from '@/features/layout/components/Navbar';
+import { Footer } from '@/features/layout/components/Footer';
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+});
 
 export const metadata: Metadata = {
-  title: "ABA Estudios | Desarrollo Web y Análisis de Datos",
-  description: "ABA Estudios — Transformamos tus ideas en código y tus datos en decisiones. Desarrollo web a medida y análisis de datos avanzado para impulsar tu negocio.",
-  keywords: "Desarrollo Web, Análisis de Datos, ABA Estudios, Diseño Web, Next.js, React",
-  openGraph: {
-    title: "ABA Estudios | Desarrollo Web y Análisis de Datos",
-    description: "Transformamos tus ideas en código y tus datos en decisiones. Desarrollo web y análisis de datos avanzado.",
-    url: "https://abaestudios.com", // Adjust as necessary
-    type: "website",
-  }
+  title: 'ABA Estudios | Soluciones Digitales y Análisis de Datos',
+  description: 'Hacemos que tu tecnología trabaje para ti. Páginas web de alta velocidad y automatización de datos para hacer crecer tu negocio.',
+  keywords: ['desarrollo web', 'landing pages', 'análisis de datos', 'automatización', 'pymes', 'latam'],
 };
 
 export default function RootLayout({
@@ -26,11 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${plusJakarta.className} antialiased bg-slate-50 text-slate-800`}>
+      <body className={`${jakarta.variable} font-sans antialiased bg-gray-50 text-[#3b3f46] selection:bg-[#43b5a9] selection:text-white flex flex-col min-h-screen`}>
         <Navbar />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
-        <FloatingContact />
       </body>
     </html>
   );
