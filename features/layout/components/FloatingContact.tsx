@@ -3,12 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Mail, X, Sparkles } from 'lucide-react';
+import { siteLinks } from '@/lib/config/site';
 
 export const FloatingContact = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const whatsappMessage = "Hola ABA Estudios, me interesa mejorar la tecnología de mi negocio y me gustaría una asesoría.";
-  const emailSubject = "Consulta sobre servicios ABA Estudios";
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
@@ -31,7 +29,7 @@ export const FloatingContact = () => {
             </div>
             <div className="p-2 flex flex-col gap-1">
               <a
-                href={`https://wa.me/50212345678?text=${encodeURIComponent(whatsappMessage)}`}
+                href={siteLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/40 transition-colors group"
@@ -46,7 +44,7 @@ export const FloatingContact = () => {
                 </div>
               </a>
               <a
-                href={`mailto:hola@abaestudios.com?subject=${encodeURIComponent(emailSubject)}`}
+                href={siteLinks.mailto}
                 className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/40 transition-colors group"
                 onClick={() => setIsOpen(false)}
               >

@@ -10,10 +10,29 @@ const lexend = Lexend({
   variable: '--font-lexend',
 });
 
+const SITE_URL = 'https://www.abaestudios.com';
+const SITE_TITLE = 'ABA Estudios | Soluciones Digitales y Análisis de Datos';
+const SITE_DESCRIPTION =
+  'Hacemos que tu tecnología trabaje para ti. Páginas web de alta velocidad y automatización de datos para hacer crecer tu negocio.';
+
 export const metadata: Metadata = {
-  title: 'ABA Estudios | Soluciones Digitales y Análisis de Datos',
-  description: 'Hacemos que tu tecnología trabaje para ti. Páginas web de alta velocidad y automatización de datos para hacer crecer tu negocio.',
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: ['desarrollo web', 'landing pages', 'análisis de datos', 'automatización', 'pymes', 'latam'],
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: 'ABA Estudios',
+    locale: 'es_GT',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

@@ -53,7 +53,7 @@ const dropdownItems = [
     icon: <Download size={18} />,
     label: 'Descargar Brochure',
     sub: 'PDF con nuestros servicios',
-    href: '#',
+    href: '/brochure.pdf',
     iconColor: 'text-brand-magenta',
     iconBg: 'bg-brand-magenta/10',
     highlight: true,
@@ -183,6 +183,9 @@ export const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Abrir menú principal"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
               className="text-slate-700 hover:text-slate-900 transition-colors focus:outline-none"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -195,6 +198,7 @@ export const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}

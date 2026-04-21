@@ -4,10 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Mail, ArrowRight, Sparkles } from 'lucide-react';
 import { GlassCard } from '@/shared/components/ui/GlassCard';
-
-// Datos de contacto — ajusta número y correo según la empresa
-const WHATSAPP_NUMBER = '50212345678';
-const EMAIL_ADDRESS   = 'hola@abaestudios.com';
+import { siteLinks } from '@/lib/config/site';
 
 interface ContactCardProps {
   index: number;
@@ -115,7 +112,7 @@ export const ContactSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <ContactCard
             index={0}
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola ABA Estudios, me interesa mejorar la tecnología de mi negocio y me gustaría una asesoría.")}`}
+            href={siteLinks.whatsapp}
             icon={<MessageCircle size={26} />}
             badge="Respuesta inmediata"
             title="Hablemos por WhatsApp"
@@ -126,7 +123,7 @@ export const ContactSection = () => {
           />
           <ContactCard
             index={1}
-            href={`mailto:${EMAIL_ADDRESS}?subject=Consulta%20sobre%20servicios%20ABA%20Estudios`}
+            href={siteLinks.mailto}
             icon={<Mail size={26} />}
             badge="Propuesta detallada"
             title="Envíanos un Correo"

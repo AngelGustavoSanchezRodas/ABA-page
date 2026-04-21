@@ -5,11 +5,11 @@ import { ContactSection } from '@/features/landing/components/ContactSection';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <HeroSection />
       <ServicesSection />
       <BenefitsSection />
       <ContactSection />
-    </main>
+    </div>
   );
 }
