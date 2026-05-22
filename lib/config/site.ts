@@ -18,21 +18,24 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'ABA Estudios',
-  phone: '50212345678',
-  email: 'hola@abaestudios.com',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'ABA Estudios',
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '50258463811',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'sangelgustavocom@gmail.com',
   whatsappMessage:
+    process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
     'Hola ABA Estudios, me interesa mejorar la tecnología de mi negocio y me gustaría una asesoría.',
-  emailSubject: 'Consulta sobre servicios ABA Estudios',
+  emailSubject: process.env.NEXT_PUBLIC_EMAIL_SUBJECT || 'Consulta sobre servicios ABA Estudios',
   social: {
-    facebook:  'https://www.facebook.com/abaestudios',
-    instagram: 'https://www.instagram.com/abaestudios',
-    linkedin:  'https://www.linkedin.com/company/abaestudios',
+    facebook:  process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://www.facebook.com/abaestudios',
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/abaestudios',
+    linkedin:  process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/company/abaestudios',
   },
 };
 
 // ── Helpers de URL derivadas ──────────────────────────────────────────────────
+const cleanPhone = (phone: string) => phone.replace(/[^0-9]/g, '');
+
 export const siteLinks = {
-  whatsapp: `https://wa.me/${siteConfig.phone}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`,
+  whatsapp: `https://wa.me/${cleanPhone(siteConfig.phone)}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`,
   mailto:   `mailto:${siteConfig.email}?subject=${encodeURIComponent(siteConfig.emailSubject)}`,
 };

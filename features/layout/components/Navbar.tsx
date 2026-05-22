@@ -29,41 +29,41 @@ const AbaLogo = ({ className }: AbaLogoProps) => (
 );
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── Opciones del dropdown de contacto ────────────────────────────────────────
-const dropdownItems = [
-  {
-    icon: <MessageCircle size={18} />,
-    label: 'Chat por WhatsApp',
-    sub: 'Respuesta en menos de 24 h',
-    href: 'https://wa.me/50212345678',
-    iconColor: 'text-brand-turquoise',
-    iconBg: 'bg-brand-turquoise/10',
-    highlight: false,
-  },
-  {
-    icon: <Mail size={18} />,
-    label: 'Enviar un Correo',
-    sub: 'Propuesta detallada por email',
-    href: 'mailto:hola@abaestudios.com',
-    iconColor: 'text-brand-mustard',
-    iconBg: 'bg-brand-mustard/10',
-    highlight: false,
-  },
-  {
-    icon: <Download size={18} />,
-    label: 'Descargar Brochure',
-    sub: 'PDF con nuestros servicios',
-    href: '/brochure.pdf',
-    iconColor: 'text-brand-magenta',
-    iconBg: 'bg-brand-magenta/10',
-    highlight: true,
-  },
-];
-// ─────────────────────────────────────────────────────────────────────────────
+import { siteLinks } from '@/lib/config/site';
 
 export const Navbar = () => {
   const [isScrolled,     setIsScrolled]     = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const dropdownItems = [
+    {
+      icon: <MessageCircle size={18} />,
+      label: 'Chat por WhatsApp',
+      sub: 'Respuesta en menos de 24 h',
+      href: siteLinks.whatsapp,
+      iconColor: 'text-brand-turquoise',
+      iconBg: 'bg-brand-turquoise/10',
+      highlight: false,
+    },
+    {
+      icon: <Mail size={18} />,
+      label: 'Enviar un Correo',
+      sub: 'Propuesta detallada por email',
+      href: siteLinks.mailto,
+      iconColor: 'text-brand-mustard',
+      iconBg: 'bg-brand-mustard/10',
+      highlight: false,
+    },
+    {
+      icon: <Download size={18} />,
+      label: 'Descargar Brochure',
+      sub: 'PDF con nuestros servicios',
+      href: '/brochure.pdf',
+      iconColor: 'text-brand-magenta',
+      iconBg: 'bg-brand-magenta/10',
+      highlight: true,
+    },
+  ];
 
   // Sombra al hacer scroll
   useEffect(() => {
