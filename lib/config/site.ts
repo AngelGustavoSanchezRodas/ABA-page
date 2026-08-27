@@ -19,8 +19,8 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'ABA Estudios',
-  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '50258463811',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'sangelgustavocom@gmail.com',
+  phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '',
   whatsappMessage:
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
     'Hola ABA Estudios, me interesa mejorar la tecnología de mi negocio y me gustaría una asesoría.',

@@ -4,6 +4,7 @@ import './globals.css';
 
 import { Navbar } from '@/features/layout/components/Navbar';
 import { Footer } from '@/features/layout/components/Footer';
+import { Analytics } from "@vercel/analytics/next";
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
