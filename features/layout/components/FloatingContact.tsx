@@ -11,7 +11,7 @@ export const FloatingContact = () => {
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end sm:bottom-6 sm:right-6">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -19,7 +19,7 @@ export const FloatingContact = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.2 } }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="mb-4 w-80 bg-[#0f172a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden origin-bottom-right"
+            className="mb-4 w-[calc(100vw-2rem)] max-w-80 bg-[#0f172a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden origin-bottom-right"
           >
             <div className="p-5 border-b border-white/10 bg-gradient-to-r from-brand-tech-blue/20 to-brand-purple/20">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">

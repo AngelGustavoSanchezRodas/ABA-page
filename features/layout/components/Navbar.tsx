@@ -164,7 +164,7 @@ export const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Abrir menú principal"
+              aria-label={mobileMenuOpen ? 'Cerrar menú principal' : 'Abrir menú principal'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
               className="text-slate-200 hover:text-white transition-colors focus:outline-none"

@@ -60,7 +60,7 @@ export const HeroSection = () => {
             </div>
           </motion.div>
 
-          <div className="w-full lg:w-1/2 relative h-[500px] sm:h-[600px] flex items-center justify-center">
+          <div className="w-full lg:w-1/2 relative h-[430px] sm:h-[600px] flex items-center justify-center">
             
             <motion.div
               className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 w-64 sm:w-72 z-20"
@@ -163,7 +163,7 @@ export const HeroSection = () => {
               </div>
             </motion.div>
             
-            <svg className="absolute inset-0 w-full h-full -z-10 opacity-30" xmlns="http://www.w3.org/2000/svg">
+            <svg className="hidden sm:block absolute inset-0 w-full h-full -z-10 opacity-30" xmlns="http://www.w3.org/2000/svg">
               <motion.path 
                 d="M 150 200 C 250 200, 200 300, 350 300" 
                 fill="transparent" 
