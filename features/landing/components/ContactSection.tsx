@@ -1,137 +1,141 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Mail, ArrowRight, Sparkles } from 'lucide-react';
+import { Send, CheckCircle, Mail, MessageCircle, Phone } from 'lucide-react';
 import { GlassCard } from '@/shared/components/ui/GlassCard';
-import { siteLinks } from '@/lib/config/site';
-
-interface ContactCardProps {
-  index: number;
-  href: string;
-  icon: React.ReactNode;
-  badge: string;
-  title: string;
-  subtitle: string;
-  accentColor: string;
-  accentBg: string;
-  accentRing: string;
-}
-
-const ContactCard: React.FC<ContactCardProps> = ({
-  index,
-  href,
-  icon,
-  badge,
-  title,
-  subtitle,
-  accentColor,
-  accentBg,
-  accentRing,
-}) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    // Entrada escalonada al entrar en viewport
-    initial={{ opacity: 0, y: 32 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.4 }}
-    transition={{ duration: 0.55, delay: index * 0.15 }}
-    // Efecto hover táctil delegado a la animacion de tailwind y framer motion
-    whileTap={{ scale: 0.98 }}
-    className="block group focus:outline-none"
-  >
-    <GlassCard className={`h-full flex flex-col items-start gap-5 border-2 ${accentRing} cursor-pointer`}>
-      {/* Blob decorativo de fondo que emerge en hover */}
-      <div
-        className={`absolute -bottom-10 -right-10 w-40 h-40 rounded-full ${accentBg.replace('/10', '/30')} opacity-0 group-hover:opacity-100 transition-all duration-500 blur-2xl`}
-      />
-
-      {/* Ícono */}
-      <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${accentBg} ${accentColor}`}>
-        {icon}
-      </div>
-
-      {/* Badge */}
-      <span className={`text-xs font-bold uppercase tracking-widest ${accentColor} opacity-90`}>
-        {badge}
-      </span>
-
-      {/* Título y subtítulo */}
-      <div>
-        <h3 className="text-xl font-extrabold text-slate-900 mb-1 leading-snug relative z-10">{title}</h3>
-        <p className="text-slate-600 text-sm leading-relaxed relative z-10">{subtitle}</p>
-      </div>
-
-      {/* CTA arrow */}
-      <div className={`flex items-center gap-2 text-sm font-bold ${accentColor} mt-auto relative z-10`}>
-        Iniciar conversación
-        <ArrowRight
-          size={16}
-          className="transition-transform duration-300 group-hover:translate-x-1"
-        />
-      </div>
-    </GlassCard>
-  </motion.a>
-);
+import { createContactMailto, siteConfig, siteLinks, type ContactFormData } from '@/lib/config/site';
 
 export const ContactSection = () => {
-  return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-transparent overflow-hidden">
-      {/* Blobs decorativos */}
-      <div className="absolute bottom-0 left-[-10%] w-80 h-80 rounded-full bg-brand-turquoise/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-10 right-[-10%] w-80 h-80 rounded-full bg-brand-mustard/10 blur-3xl pointer-events-none" />
+  const [formData, setFormData] = useState<ContactFormData>({ name: '', email: '', project: '' });
+  const [status, setStatus] = useState<'idle' | 'success'>('idle');
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header de sección */}
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href = createContactMailto(formData);
+    setStatus('success');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <section id="contact" aria-labelledby="contact-title" className="relative py-24 lg:py-32 bg-transparent overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 24 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          {/* Badge superior */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-turquoise/10 text-brand-turquoise text-xs font-bold uppercase tracking-widest rounded-full mb-6">
-            <Sparkles size={14} />
-            Hablemos
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-5">
-            ¿Listo para{' '}
-            <span className="text-brand-turquoise">impulsar</span>{' '}
-            tu negocio?
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-tech-blue bg-brand-tech-blue/20 border border-brand-tech-blue/30 px-4 py-1.5 rounded-full mb-4">
+            Empecemos
+          </span>
+          <h2 id="contact-title" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+            Háblanos de tu <span className="text-brand-tech-blue">Proyecto</span>
           </h2>
-          <p className="text-slate-600 text-lg max-w-xl mx-auto leading-relaxed">
-            Sin formularios complicados. Elige la vía que prefieras y cuéntanos sobre tu próximo proyecto.
-          </p>
+          <p className="text-slate-400 text-lg">Déjame tus datos y te responderé en menos de 24 horas.</p>
         </motion.div>
 
-        {/* Tarjetas de contacto */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <ContactCard
-            index={0}
-            href={siteLinks.whatsapp}
-            icon={<MessageCircle size={26} />}
-            badge="Respuesta inmediata"
-            title="Hablemos por WhatsApp"
-            subtitle="Escríbenos y despeja tus dudas al instante. Atención personalizada sin compromisos."
-            accentColor="text-brand-turquoise"
-            accentBg="bg-brand-turquoise/10"
-            accentRing="border-brand-turquoise/30 hover:border-brand-turquoise/70"
-          />
-          <ContactCard
-            index={1}
-            href={siteLinks.mailto}
-            icon={<Mail size={26} />}
-            badge="Propuesta detallada"
-            title="Envíanos un Correo"
-            subtitle="Cuéntanos los detalles de tu proyecto. Analizamos tu caso y te enviamos una propuesta clara."
-            accentColor="text-brand-mustard"
-            accentBg="bg-brand-mustard/10"
-            accentRing="border-brand-mustard/30 hover:border-brand-mustard/70"
-          />
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] items-start">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-white">Elige cómo contactarnos</h3>
+            <p className="text-sm leading-relaxed text-slate-400">
+            Cuéntame qué necesitas y encontraremos la mejor solución para tu negocio.
+            </p>
+            <div className="space-y-3">
+              <a href={siteLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm transition-colors hover:border-[#25D366]/50 hover:bg-[#25D366]/10">
+                <MessageCircle className="text-[#25D366]" size={21} />
+                <span><strong className="block text-white">WhatsApp</strong><span className="text-slate-400">Respuesta rápida</span></span>
+              </a>
+              <a href={siteLinks.phone} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm transition-colors hover:border-brand-tech-blue/50 hover:bg-brand-tech-blue/10">
+                <Phone className="text-brand-tech-blue" size={21} />
+                <span><strong className="block text-white">Llamar ahora</strong><span className="text-slate-400">{siteConfig.phone}</span></span>
+              </a>
+              <a href={siteLinks.mailto} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm transition-colors hover:border-brand-purple/50 hover:bg-brand-purple/10">
+                <Mail className="text-brand-purple" size={21} />
+                <span><strong className="block text-white">Correo electrónico</strong><span className="text-slate-400">{siteConfig.email}</span></span>
+              </a>
+            </div>
+          </div>
+
+        <GlassCard className="p-8 sm:p-10 rounded-3xl border border-white/10 bg-[#0f172a]/80 backdrop-blur-xl shadow-2xl">
+          {status === 'success' ? (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex flex-col items-center justify-center text-center py-10"
+              aria-live="polite"
+            >
+              <div className="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20">
+                <CheckCircle size={40} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">¡Mensaje preparado!</h3>
+              <p className="text-slate-400 mb-8 max-w-sm">Abrimos tu cliente de correo con los datos listos. Revisa el mensaje y confirma el envío.</p>
+              <button 
+                onClick={() => { setStatus('idle'); setFormData({ name: '', email: '', project: '' }); }}
+                className="px-6 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium transition-all"
+              >
+                Enviar otro mensaje
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-slate-300 ml-1">Nombre Completo</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    autoComplete="name"
+                    className="w-full bg-[#1e293b]/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-tech-blue focus:border-transparent transition-all shadow-inner"
+                    placeholder="Ej. Juan Pérez"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">Correo Electrónico</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                    className="w-full bg-[#1e293b]/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-tech-blue focus:border-transparent transition-all shadow-inner"
+                    placeholder="tucorreo@empresa.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="project" className="text-sm font-medium text-slate-300 ml-1">Detalles del Proyecto</label>
+                <textarea
+                  id="project"
+                  name="project"
+                  required
+                  rows={4}
+                  value={formData.project}
+                  onChange={handleChange}
+                  className="w-full bg-[#1e293b]/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-tech-blue focus:border-transparent transition-all resize-none shadow-inner"
+                  placeholder="Cuéntanos brevemente qué necesitas automatizar o desarrollar..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-brand-tech-blue hover:bg-brand-tech-blue/90 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-lg shadow-brand-tech-blue/20 flex items-center justify-center gap-2 group"
+              >
+                Preparar Mensaje <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </form>
+          )}
+        </GlassCard>
         </div>
       </div>
     </section>

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
+import { siteConfig } from '@/lib/config/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://www.abaestudios.com',
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,

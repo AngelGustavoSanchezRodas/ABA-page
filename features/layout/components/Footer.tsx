@@ -3,13 +3,17 @@ import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { siteConfig, siteLinks } from '@/lib/config/site';
 
-const Facebook = ({ size = 18 }: { size?: number }) => (
+interface IconProps {
+  size?: number;
+}
+
+const Facebook: React.FC<IconProps> = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 
-const Instagram = ({ size = 18 }: { size?: number }) => (
+const Instagram: React.FC<IconProps> = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -17,7 +21,7 @@ const Instagram = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const LinkedIn = ({ size = 18 }: { size?: number }) => (
+const LinkedIn: React.FC<IconProps> = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect x="2" y="9" width="4" height="12" />
@@ -25,22 +29,19 @@ const LinkedIn = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-// ── Logo tipográfico reutilizable para el Footer ─────────────────────────────
-const FooterLogo = () => (
+const FooterLogo: React.FC = () => (
   <span className="text-2xl font-black tracking-tight select-none">
-    <span className="text-brand-turquoise">A</span>
-    <span className="text-brand-mustard">B</span>
-    <span className="text-brand-magenta">A</span>
-    <span className="text-white font-semibold ml-2 text-lg">Estudios</span>
+    <span className="text-[var(--color-brand-tech-blue)]">A</span>
+    <span className="text-[var(--color-brand-purple)]">A</span>
+    <span className="text-[var(--color-brand-orange)]">A</span>
+    <span className="text-white font-semibold ml-2 text-lg">Estudio</span>
   </span>
 );
-// ─────────────────────────────────────────────────────────────────────────────
 
 const navLinks = [
-  { label: 'Inicio',      href: '#home' },
-  { label: 'Servicios',   href: '#services' },
-  { label: 'Beneficios',  href: '#benefits' },
-  { label: 'Contacto',    href: '#contact' },
+  { label: 'Soluciones Web', href: '#soluciones-web' },
+  { label: 'Sistemas Excel', href: '#sistemas-excel' },
+  { label: 'Plantillas',     href: '#plantillas' },
 ];
 
 const socialLinks = [
@@ -49,26 +50,22 @@ const socialLinks = [
   { icon: <LinkedIn size={18} />,  href: siteConfig.social.linkedin,  label: 'LinkedIn'  },
 ];
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-slate-300">
-      {/* Línea decorativa superior con gradiente de marca */}
-      <div className="h-px w-full bg-gradient-to-r from-brand-turquoise via-brand-mustard to-brand-magenta" />
+    <footer className="bg-[#020617] text-slate-300 relative border-t border-white/10 mt-20">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[var(--color-brand-tech-blue)] via-[var(--color-brand-purple)] to-[var(--color-brand-orange)] opacity-50" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-
-          {/* ── Columna 1: Marca ─────────────────────────────────────────── */}
           <div className="space-y-4">
             <FooterLogo />
-            <p className="text-sm leading-relaxed text-slate-300 max-w-xs">
-              Creamos soluciones digitales a la medida para negocios que buscan crecer y optimizar su tiempo.
+            <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
+              {siteConfig.description}
             </p>
           </div>
 
-          {/* ── Columna 2: Navegación rápida ─────────────────────────────── */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-5">
               Navegación
@@ -78,9 +75,9 @@ export const Footer = () => {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-300 hover:text-white transition-colors duration-200 flex items-center gap-1 group"
+                    className="text-sm text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-1 group"
                   >
-                    <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 text-brand-turquoise">›</span>
+                    <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 text-[var(--color-brand-tech-blue)]">›</span>
                     {link.label}
                   </Link>
                 </li>
@@ -88,16 +85,19 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* ── Columna 3: Contacto y Redes ──────────────────────────────── */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-5">
               Conecta con nosotros
             </h4>
-
-            {/* Email */}
+            <a
+              href={siteLinks.phone}
+              className="block text-sm text-slate-400 hover:text-[var(--color-brand-tech-blue)] transition-colors mb-2"
+            >
+              Tel. {siteConfig.phone}
+            </a>
             <a
               href={siteLinks.mailto}
-              className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-brand-mustard transition-colors mb-6 group"
+              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[var(--color-brand-tech-blue)] transition-colors mb-6 group"
             >
               {siteConfig.email}
               <ArrowUpRight
@@ -105,9 +105,7 @@ export const Footer = () => {
                 className="opacity-0 group-hover:opacity-100 transition-opacity"
               />
             </a>
-
-            {/* Redes sociales */}
-            <div className="flex items-center gap-3">
+            <nav aria-label="Redes sociales" className="flex items-center gap-3">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -115,25 +113,24 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-turquoise/20 hover:text-brand-turquoise text-slate-300 transition-all duration-200"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-[var(--color-brand-tech-blue)]/20 hover:text-[var(--color-brand-tech-blue)] text-slate-400 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
 
-        {/* ── Línea divisoria y Copyright ──────────────────────────────────── */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
             © {currentYear}{' '}
-            <span className="text-white font-semibold">ABA Estudios</span>. Todos los derechos reservados.
+            <span className="text-white font-semibold">TripleAEstudio</span>. Todos los derechos reservados.
           </p>
           <p className="flex items-center gap-1">
             Hecho con
-            <span className="text-brand-magenta mx-1">♥</span>
-            en Guatemala
+            <span className="text-[var(--color-brand-tech-blue)] mx-1">♥</span>
+            en LatAm
           </p>
         </div>
       </div>

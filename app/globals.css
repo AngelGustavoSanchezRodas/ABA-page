@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-turquoise: #43b5a9;
-  --color-brand-mustard: #dfa135;
-  --color-brand-magenta: #ce4a7e;
-  --color-brand-dark: #3b3f46;
+  --color-brand-tech-blue: #0ea5e9;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-orange: #f97316;
+  --color-brand-dark: #020617;
+  --color-brand-dark-surface: #0f172a;
 }
 
 @utility glass-panel {
   backdrop-filter: blur(16px);
-  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(15, 23, 42, 0.6);
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(15, 23, 42, 0.05);
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 }
