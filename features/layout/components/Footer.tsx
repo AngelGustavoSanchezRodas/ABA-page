@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { siteConfig, siteLinks } from '@/lib/config/site';
+import { TripleALogo } from '@/shared/components/branding/TripleALogo';
 
 interface IconProps {
   size?: number;
@@ -29,15 +30,6 @@ const LinkedIn: React.FC<IconProps> = ({ size = 18 }) => (
   </svg>
 );
 
-const FooterLogo: React.FC = () => (
-  <span className="text-2xl font-black tracking-tight select-none">
-    <span className="text-[var(--color-brand-tech-blue)]">A</span>
-    <span className="text-[var(--color-brand-purple)]">A</span>
-    <span className="text-[var(--color-brand-orange)]">A</span>
-    <span className="text-white font-semibold ml-2 text-lg">Estudio</span>
-  </span>
-);
-
 const navLinks = [
   { label: 'Soluciones Web', href: '#soluciones-web' },
   { label: 'Sistemas Excel', href: '#sistemas-excel' },
@@ -60,7 +52,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           <div className="space-y-4">
-            <FooterLogo />
+            <TripleALogo className="h-10 w-auto" />
             <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
               {siteConfig.description}
             </p>

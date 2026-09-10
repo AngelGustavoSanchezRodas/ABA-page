@@ -7,26 +7,7 @@ import { Menu, X, MessageCircle, Mail, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { siteConfig, siteLinks } from '@/lib/config/site';
-
-interface TripleALogoProps {
-  className?: string;
-}
-
-const TripleALogo: React.FC<TripleALogoProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 250 70"
-    className={className}
-    aria-label="TripleAEstudio"
-    role="img"
-  >
-    <text x="4"   y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-[var(--color-brand-tech-blue)]" letterSpacing="-2">A</text>
-    <text x="46"  y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-[var(--color-brand-purple)]" letterSpacing="-2">A</text>
-    <text x="88"  y="48" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="900" fontSize="52" className="fill-[var(--color-brand-orange)]" letterSpacing="-2">A</text>
-    <text x="138" y="46" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="600" fontSize="16"  className="fill-white" letterSpacing="0.5">Estudio</text>
-    <line x1="130" y1="14" x2="130" y2="48" className="stroke-slate-500" strokeWidth="1.5" />
-  </svg>
-);
+import { TripleALogo } from '@/shared/components/branding/TripleALogo';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
