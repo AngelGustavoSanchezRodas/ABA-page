@@ -10,7 +10,7 @@ export const TripleALogo: React.FC<TripleALogoProps> = ({ className, showName = 
     xmlns="http://www.w3.org/2000/svg"
     viewBox={showName ? '0 0 250 70' : '0 0 120 120'}
     className={className}
-    aria-label={showName ? 'TripleA Estudio' : 'TripleA'}
+    aria-label={showName ? 'AAA Estudio' : 'AAA'}
     role="img"
   >
     <rect

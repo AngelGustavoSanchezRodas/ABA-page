@@ -23,9 +23,9 @@ export interface ContactFormData {
 }
 
 export const siteConfig: SiteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'TripleAEstudio',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'AAA Estudio',
   url: 'https://www.tripleaestudio.com',
-  title: 'TripleAEstudio | Desarrollo web y sistemas para tu negocio',
+  title: 'AAA Estudio | Desarrollo web y sistemas para tu negocio',
   description:
     'Desarrollo web, sistemas en Excel y plantillas para ordenar el trabajo diario de tu negocio.',
   locale: 'es_GT',
@@ -34,8 +34,8 @@ export const siteConfig: SiteConfig = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'angelgustavos93@gmail.com',
   whatsappMessage:
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
-    'Hola TripleAEstudio, quisiera conversar sobre una solución para mi negocio.',
-  emailSubject: process.env.NEXT_PUBLIC_EMAIL_SUBJECT || 'Consulta sobre servicios TripleAEstudio',
+    'Hola AAA Estudio, quisiera conversar sobre una solución para mi negocio.',
+  emailSubject: process.env.NEXT_PUBLIC_EMAIL_SUBJECT || 'Consulta sobre servicios AAA Estudio',
   social: {
     facebook:  process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://www.facebook.com/tripleaestudio',
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/tripleaestudio',

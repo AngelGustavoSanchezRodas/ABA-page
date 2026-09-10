@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/config/site';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
-    short_name: 'TripleA',
+    short_name: 'AAA',
     description: siteConfig.description,
     start_url: '/',
     display: 'standalone',

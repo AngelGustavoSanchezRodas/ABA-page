@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
             © {currentYear}{' '}
-            <span className="text-white font-semibold">TripleAEstudio</span>. Todos los derechos reservados.
+            <span className="text-white font-semibold">AAA Estudio</span>. Todos los derechos reservados.
           </p>
           <p className="flex items-center gap-1">
             Hecho con

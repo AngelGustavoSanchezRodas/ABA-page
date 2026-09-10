@@ -1,6 +1,6 @@
-# TripleAEstudio
+# AAA Estudio
 
-Sitio web de TripleAEstudio, un estudio dedicado al desarrollo web, sistemas en Excel y documentos de trabajo para pequeñas empresas.
+Sitio web de AAA Estudio, un estudio dedicado al desarrollo web, sistemas en Excel y documentos de trabajo para pequeñas empresas.
 
 ## Requisitos
 

@@ -56,7 +56,7 @@ export const Navbar: React.FC = () => {
     >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="#home" aria-label="TripleAEstudio – Ir al inicio">
+          <Link href="#home" aria-label="AAA Estudio – Ir al inicio">
             <TripleALogo className="h-10 w-auto" />
           </Link>
 
