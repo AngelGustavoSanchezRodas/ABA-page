@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 export const HeroSection = () => {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-transparent">
+    <section id="home" className="relative overflow-hidden bg-transparent pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-48 lg:pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+        <div className="flex flex-col items-center gap-12 sm:gap-16 lg:flex-row lg:gap-8">
 
           <motion.div
             className="w-full lg:w-1/2 text-center lg:text-left z-10"
@@ -24,11 +24,11 @@ export const HeroSection = () => {
               Sistemas Modulares a Medida
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            <h1 className="mb-6 text-3xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
               Construimos el <span className="text-brand-tech-blue">software</span>, las <span className="text-brand-purple">plataformas</span> y las <span className="text-brand-orange">plantillas</span> que automatizan tu trabajo.
             </h1>
 
-            <p className="text-lg text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="mx-auto mb-8 max-w-2xl text-base text-slate-400 sm:text-lg lg:mx-0">
               Ordenamos los procesos que hoy te quitan tiempo y los convertimos en herramientas que tu equipo pueda usar sin complicaciones.
             </p>
 

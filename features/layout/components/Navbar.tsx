@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
             <TripleALogo className="h-10 w-auto" />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Cerrar menú principal' : 'Abrir menú principal'}
@@ -165,7 +165,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: 'easeInOut' }}
-            className="md:hidden glass-panel absolute top-full left-0 w-full mt-2 rounded-2xl overflow-hidden"
+            className="lg:hidden glass-panel absolute top-full left-0 w-full mt-2 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl"
           >
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navLinks.map((link) => (
